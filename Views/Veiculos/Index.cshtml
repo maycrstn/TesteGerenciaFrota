@@ -1,0 +1,27 @@
+﻿@model IEnumerable<GerenciaFrota.Models.Veiculo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.Hidden("urlFiltrar", Url.Action("FiltrarChassi","Veiculos"))
+<p>
+    @Html.ActionLink("Novo Veículo", "Create")
+</p>
+<div class="row">
+    <div class="col-md-4">
+        @Html.Editor("buscaChassi", new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-default" onclick="buscaChassi()">Buscar</button>
+    </div>
+</div>
+<br />
+
+@Html.Partial("_ListVeiculos", Model)
+
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/veiculo.js")"></script>
+}
